@@ -1,0 +1,585 @@
+\* Railcar_yards *\
+Minimize
+OBJ: - 10 AktivnostOdlaznihVagona_1000 - 20 AktivnostOdlaznihVagona_1002
+ - 30 AktivnostOdlaznihVagona_1003 + 100 PrisustvoNaPozicijama_('1000',_'A')
+ + 100 PrisustvoNaPozicijama_('1000',_'B')
+ + 100 PrisustvoNaPozicijama_('1000',_'C')
+ + 100 PrisustvoNaPozicijama_('1000',_'D')
+ + 200 PrisustvoNaPozicijama_('1000',_'E')
+ + 250 PrisustvoNaPozicijama_('1000',_'F')
+ + 290 PrisustvoNaPozicijama_('1000',_'G')
+ + 300 PrisustvoNaPozicijama_('1002',_'A')
+ + 300 PrisustvoNaPozicijama_('1002',_'B')
+ + 300 PrisustvoNaPozicijama_('1002',_'C')
+ + 300 PrisustvoNaPozicijama_('1002',_'D')
+ + 300 PrisustvoNaPozicijama_('1002',_'E')
+ + 300 PrisustvoNaPozicijama_('1002',_'F')
+ + 300 PrisustvoNaPozicijama_('1002',_'G')
+ + 300 PrisustvoNaPozicijama_('1003',_'A')
+ + 300 PrisustvoNaPozicijama_('1003',_'B')
+ + 300 PrisustvoNaPozicijama_('1003',_'C')
+ + 300 PrisustvoNaPozicijama_('1003',_'D')
+ + 300 PrisustvoNaPozicijama_('1003',_'E')
+ + 300 PrisustvoNaPozicijama_('1003',_'F')
+ + 300 PrisustvoNaPozicijama_('1003',_'G')
+Subject To
+_C1: - 5 DolazniRanziranje_('1111',_1) - 5 DolazniRanziranje_('1112',_1)
+ - 5 DolazniRanziranje_('1113',_1) - VremenaTehnickogPregleda_1111
+ + VremenaTehnickogPregleda_1112 >= 0
+_C10: DolazniRanziranje_('1112',_1) + DolazniRanziranje_('1112',_2)
+ + DolazniRanziranje_('1112',_3) = 1
+_C100: - 1000 DolazniRanziranje_('1113',_3)
+ + 1000 FormiraniOdlazniVagoni_(2,_3) - 1000 OdlazniRanziranje_('1003',_2)
+ - PrisustvoNaPozicijama_('1003',_'F') - PrisustvoNaPozicijama_('1003',_'G')
+ >= -2000
+_C101: - 1000 DolazniRanziranje_('1113',_3)
+ + 1000 FormiraniOdlazniVagoni_(2,_3) - 1000 OdlazniRanziranje_('1003',_2)
+ - PrisustvoNaPozicijama_('1003',_'F') - PrisustvoNaPozicijama_('1003',_'G')
+ >= -2000
+_C102: - 20 OdlazniRanziranje_('1000',_2) - 20 OdlazniRanziranje_('1002',_2)
+ - 20 OdlazniRanziranje_('1003',_2) + 0 VremenaOtpreme_1002 >= 0
+_C103: - 20 OdlazniRanziranje_('1000',_2) - 20 OdlazniRanziranje_('1002',_2)
+ - 20 OdlazniRanziranje_('1003',_2) - VremenaOtpreme_1002
+ + VremenaOtpreme_1003 >= 0
+_C104: 940 OdlazniRanziranje_('1000',_2) + 880 OdlazniRanziranje_('1002',_2)
+ + 790 OdlazniRanziranje_('1003',_2) + VremenaOtpreme_1002 <= 1000
+_C105: 940 OdlazniRanziranje_('1000',_2) + 880 OdlazniRanziranje_('1002',_2)
+ + 790 OdlazniRanziranje_('1003',_2) + VremenaOtpreme_1002 <= 1000
+_C106: 940 OdlazniRanziranje_('1000',_2) + 880 OdlazniRanziranje_('1002',_2)
+ + 790 OdlazniRanziranje_('1003',_2) + VremenaOtpreme_1002 <= 1000
+_C107: - AktivnostOdlaznihVagona_1000 + 2 OdlazniRanziranje_('1000',_2) = 0
+_C108: - AktivnostOdlaznihVagona_1002 + 2 OdlazniRanziranje_('1002',_2) = 0
+_C109: - AktivnostOdlaznihVagona_1003 + 2 OdlazniRanziranje_('1003',_2) = 0
+_C11: DolazniRanziranje_('1113',_1) + DolazniRanziranje_('1113',_2)
+ + DolazniRanziranje_('1113',_3) = 1
+_C110: OdlazniRanziranje_('1000',_2) + OdlazniRanziranje_('1002',_2)
+ + OdlazniRanziranje_('1003',_2) <= 1
+_C111: OdlazniRanziranje_('1000',_2) + OdlazniRanziranje_('1002',_2)
+ + OdlazniRanziranje_('1003',_2) <= 1
+_C112: PrisustvoNaPozicijama_('1000',_'A')
+ + PrisustvoNaPozicijama_('1002',_'A') + PrisustvoNaPozicijama_('1003',_'A')
+ <= 1
+_C113: PrisustvoNaPozicijama_('1000',_'B')
+ + PrisustvoNaPozicijama_('1002',_'B') + PrisustvoNaPozicijama_('1003',_'B')
+ <= 1
+_C114: PrisustvoNaPozicijama_('1000',_'C')
+ + PrisustvoNaPozicijama_('1002',_'C') + PrisustvoNaPozicijama_('1003',_'C')
+ <= 1
+_C115: PrisustvoNaPozicijama_('1000',_'D')
+ + PrisustvoNaPozicijama_('1002',_'D') + PrisustvoNaPozicijama_('1003',_'D')
+ <= 1
+_C116: PrisustvoNaPozicijama_('1000',_'E')
+ + PrisustvoNaPozicijama_('1002',_'E') + PrisustvoNaPozicijama_('1003',_'E')
+ <= 1
+_C117: PrisustvoNaPozicijama_('1000',_'F')
+ + PrisustvoNaPozicijama_('1002',_'F') + PrisustvoNaPozicijama_('1003',_'F')
+ <= 1
+_C118: PrisustvoNaPozicijama_('1000',_'G')
+ + PrisustvoNaPozicijama_('1002',_'G') + PrisustvoNaPozicijama_('1003',_'G')
+ <= 1
+_C119: - 2000 AktivnostOdlaznihVagona_1000
+ + 10 PrisustvoNaPozicijama_('1000',_'A')
+ + 20 PrisustvoNaPozicijama_('1000',_'B')
+ + 15 PrisustvoNaPozicijama_('1000',_'C')
+ + 10 PrisustvoNaPozicijama_('1000',_'D')
+ + 20 PrisustvoNaPozicijama_('1000',_'E')
+ + 20 PrisustvoNaPozicijama_('1000',_'F')
+ + 20 PrisustvoNaPozicijama_('1000',_'G') <= 0
+_C12: - 5 DolazniRanziranje_('1111',_1) - 5 DolazniRanziranje_('1112',_1)
+ - 5 DolazniRanziranje_('1113',_1) - 1000 FormiraniOdlazniVagoni_(1,_1)
+ + VremenaOtpreme_1000 - VremenaTehnickogPregleda_1111 >= -975
+_C120: - 2000 AktivnostOdlaznihVagona_1000
+ + 1250 PrisustvoNaPozicijama_('1000',_'A')
+ + 2350 PrisustvoNaPozicijama_('1000',_'B')
+ + 1750 PrisustvoNaPozicijama_('1000',_'C')
+ + 1250 PrisustvoNaPozicijama_('1000',_'D')
+ + 3350 PrisustvoNaPozicijama_('1000',_'E')
+ + 2250 PrisustvoNaPozicijama_('1000',_'F')
+ + 2550 PrisustvoNaPozicijama_('1000',_'G') <= 0
+_C121: - 2000 AktivnostOdlaznihVagona_1000
+ + 15 PrisustvoNaPozicijama_('1000',_'A')
+ + 15 PrisustvoNaPozicijama_('1000',_'B')
+ + 15 PrisustvoNaPozicijama_('1000',_'C')
+ + 15 PrisustvoNaPozicijama_('1000',_'D')
+ + 15 PrisustvoNaPozicijama_('1000',_'E')
+ + 15 PrisustvoNaPozicijama_('1000',_'F')
+ + 15 PrisustvoNaPozicijama_('1000',_'G') <= 0
+_C122: - 2000 AktivnostOdlaznihVagona_1002
+ + 10 PrisustvoNaPozicijama_('1002',_'A')
+ + 20 PrisustvoNaPozicijama_('1002',_'B')
+ + 15 PrisustvoNaPozicijama_('1002',_'C')
+ + 10 PrisustvoNaPozicijama_('1002',_'D')
+ + 20 PrisustvoNaPozicijama_('1002',_'E')
+ + 20 PrisustvoNaPozicijama_('1002',_'F')
+ + 20 PrisustvoNaPozicijama_('1002',_'G') <= 0
+_C123: - 2000 AktivnostOdlaznihVagona_1002
+ + 1250 PrisustvoNaPozicijama_('1002',_'A')
+ + 2350 PrisustvoNaPozicijama_('1002',_'B')
+ + 1750 PrisustvoNaPozicijama_('1002',_'C')
+ + 1250 PrisustvoNaPozicijama_('1002',_'D')
+ + 3350 PrisustvoNaPozicijama_('1002',_'E')
+ + 2250 PrisustvoNaPozicijama_('1002',_'F')
+ + 2550 PrisustvoNaPozicijama_('1002',_'G') <= 0
+_C124: - 2000 AktivnostOdlaznihVagona_1002
+ + 15 PrisustvoNaPozicijama_('1002',_'A')
+ + 15 PrisustvoNaPozicijama_('1002',_'B')
+ + 15 PrisustvoNaPozicijama_('1002',_'C')
+ + 15 PrisustvoNaPozicijama_('1002',_'D')
+ + 15 PrisustvoNaPozicijama_('1002',_'E')
+ + 15 PrisustvoNaPozicijama_('1002',_'F')
+ + 15 PrisustvoNaPozicijama_('1002',_'G') <= 0
+_C125: - 2000 AktivnostOdlaznihVagona_1003
+ + 10 PrisustvoNaPozicijama_('1003',_'A')
+ + 20 PrisustvoNaPozicijama_('1003',_'B')
+ + 15 PrisustvoNaPozicijama_('1003',_'C')
+ + 10 PrisustvoNaPozicijama_('1003',_'D')
+ + 20 PrisustvoNaPozicijama_('1003',_'E')
+ + 20 PrisustvoNaPozicijama_('1003',_'F')
+ + 20 PrisustvoNaPozicijama_('1003',_'G') <= 0
+_C126: - 2000 AktivnostOdlaznihVagona_1003
+ + 1250 PrisustvoNaPozicijama_('1003',_'A')
+ + 2350 PrisustvoNaPozicijama_('1003',_'B')
+ + 1750 PrisustvoNaPozicijama_('1003',_'C')
+ + 1250 PrisustvoNaPozicijama_('1003',_'D')
+ + 3350 PrisustvoNaPozicijama_('1003',_'E')
+ + 2250 PrisustvoNaPozicijama_('1003',_'F')
+ + 2550 PrisustvoNaPozicijama_('1003',_'G') <= 0
+_C127: - 2000 AktivnostOdlaznihVagona_1003
+ + 15 PrisustvoNaPozicijama_('1003',_'A')
+ + 15 PrisustvoNaPozicijama_('1003',_'B')
+ + 15 PrisustvoNaPozicijama_('1003',_'C')
+ + 15 PrisustvoNaPozicijama_('1003',_'D')
+ + 15 PrisustvoNaPozicijama_('1003',_'E')
+ + 15 PrisustvoNaPozicijama_('1003',_'F')
+ + 15 PrisustvoNaPozicijama_('1003',_'G') <= 0
+_C128: - 20 OsobineOdlaznihVagona_('1000',_'r')
+ + 10 PrisustvoNaPozicijama_('1000',_'A')
+ + 20 PrisustvoNaPozicijama_('1000',_'B')
+ + 15 PrisustvoNaPozicijama_('1000',_'C')
+ + 10 PrisustvoNaPozicijama_('1000',_'D')
+ + 20 PrisustvoNaPozicijama_('1000',_'E')
+ + 20 PrisustvoNaPozicijama_('1000',_'F')
+ + 20 PrisustvoNaPozicijama_('1000',_'G') >= 0
+_C129: - 20 OsobineOdlaznihVagona_('1000',_'w')
+ + 1250 PrisustvoNaPozicijama_('1000',_'A')
+ + 2350 PrisustvoNaPozicijama_('1000',_'B')
+ + 1750 PrisustvoNaPozicijama_('1000',_'C')
+ + 1250 PrisustvoNaPozicijama_('1000',_'D')
+ + 3350 PrisustvoNaPozicijama_('1000',_'E')
+ + 2250 PrisustvoNaPozicijama_('1000',_'F')
+ + 2550 PrisustvoNaPozicijama_('1000',_'G') >= 0
+_C13: - 5 DolazniRanziranje_('1111',_1) - 5 DolazniRanziranje_('1112',_1)
+ - 5 DolazniRanziranje_('1113',_1) - 1000 FormiraniOdlazniVagoni_(2,_1)
+ + VremenaOtpreme_1002 - VremenaTehnickogPregleda_1111 >= -975
+_C130: - 20 OsobineOdlaznihVagona_('1000',_'l')
+ + 15 PrisustvoNaPozicijama_('1000',_'A')
+ + 15 PrisustvoNaPozicijama_('1000',_'B')
+ + 15 PrisustvoNaPozicijama_('1000',_'C')
+ + 15 PrisustvoNaPozicijama_('1000',_'D')
+ + 15 PrisustvoNaPozicijama_('1000',_'E')
+ + 15 PrisustvoNaPozicijama_('1000',_'F')
+ + 15 PrisustvoNaPozicijama_('1000',_'G') >= 0
+_C131: - 20 OsobineOdlaznihVagona_('1002',_'r')
+ + 10 PrisustvoNaPozicijama_('1002',_'A')
+ + 20 PrisustvoNaPozicijama_('1002',_'B')
+ + 15 PrisustvoNaPozicijama_('1002',_'C')
+ + 10 PrisustvoNaPozicijama_('1002',_'D')
+ + 20 PrisustvoNaPozicijama_('1002',_'E')
+ + 20 PrisustvoNaPozicijama_('1002',_'F')
+ + 20 PrisustvoNaPozicijama_('1002',_'G') >= 0
+_C132: - 20 OsobineOdlaznihVagona_('1002',_'w')
+ + 1250 PrisustvoNaPozicijama_('1002',_'A')
+ + 2350 PrisustvoNaPozicijama_('1002',_'B')
+ + 1750 PrisustvoNaPozicijama_('1002',_'C')
+ + 1250 PrisustvoNaPozicijama_('1002',_'D')
+ + 3350 PrisustvoNaPozicijama_('1002',_'E')
+ + 2250 PrisustvoNaPozicijama_('1002',_'F')
+ + 2550 PrisustvoNaPozicijama_('1002',_'G') >= 0
+_C133: - 20 OsobineOdlaznihVagona_('1002',_'l')
+ + 15 PrisustvoNaPozicijama_('1002',_'A')
+ + 15 PrisustvoNaPozicijama_('1002',_'B')
+ + 15 PrisustvoNaPozicijama_('1002',_'C')
+ + 15 PrisustvoNaPozicijama_('1002',_'D')
+ + 15 PrisustvoNaPozicijama_('1002',_'E')
+ + 15 PrisustvoNaPozicijama_('1002',_'F')
+ + 15 PrisustvoNaPozicijama_('1002',_'G') >= 0
+_C134: - 20 OsobineOdlaznihVagona_('1003',_'r')
+ + 10 PrisustvoNaPozicijama_('1003',_'A')
+ + 20 PrisustvoNaPozicijama_('1003',_'B')
+ + 15 PrisustvoNaPozicijama_('1003',_'C')
+ + 10 PrisustvoNaPozicijama_('1003',_'D')
+ + 20 PrisustvoNaPozicijama_('1003',_'E')
+ + 20 PrisustvoNaPozicijama_('1003',_'F')
+ + 20 PrisustvoNaPozicijama_('1003',_'G') >= 0
+_C135: - 20 OsobineOdlaznihVagona_('1003',_'w')
+ + 1250 PrisustvoNaPozicijama_('1003',_'A')
+ + 2350 PrisustvoNaPozicijama_('1003',_'B')
+ + 1750 PrisustvoNaPozicijama_('1003',_'C')
+ + 1250 PrisustvoNaPozicijama_('1003',_'D')
+ + 3350 PrisustvoNaPozicijama_('1003',_'E')
+ + 2250 PrisustvoNaPozicijama_('1003',_'F')
+ + 2550 PrisustvoNaPozicijama_('1003',_'G') >= 0
+_C136: - 20 OsobineOdlaznihVagona_('1003',_'l')
+ + 15 PrisustvoNaPozicijama_('1003',_'A')
+ + 15 PrisustvoNaPozicijama_('1003',_'B')
+ + 15 PrisustvoNaPozicijama_('1003',_'C')
+ + 15 PrisustvoNaPozicijama_('1003',_'D')
+ + 15 PrisustvoNaPozicijama_('1003',_'E')
+ + 15 PrisustvoNaPozicijama_('1003',_'F')
+ + 15 PrisustvoNaPozicijama_('1003',_'G') >= 0
+_C137: - AktivnostOdlaznihVagona_1000 + OsobineOdlaznihVagona_('1000',_'l')
+ + OsobineOdlaznihVagona_('1000',_'r') + OsobineOdlaznihVagona_('1000',_'w')
+ >= 0
+_C138: - AktivnostOdlaznihVagona_1002 + OsobineOdlaznihVagona_('1002',_'l')
+ + OsobineOdlaznihVagona_('1002',_'r') + OsobineOdlaznihVagona_('1002',_'w')
+ >= 0
+_C139: - AktivnostOdlaznihVagona_1003 + OsobineOdlaznihVagona_('1003',_'l')
+ + OsobineOdlaznihVagona_('1003',_'r') + OsobineOdlaznihVagona_('1003',_'w')
+ >= 0
+_C14: - 5 DolazniRanziranje_('1111',_1) - 5 DolazniRanziranje_('1112',_1)
+ - 5 DolazniRanziranje_('1113',_1) - 1000 FormiraniOdlazniVagoni_(3,_1)
+ + VremenaOtpreme_1003 - VremenaTehnickogPregleda_1111 >= -975
+_C15: - 5 DolazniRanziranje_('1111',_2) - 5 DolazniRanziranje_('1112',_2)
+ - 5 DolazniRanziranje_('1113',_2) - 1000 FormiraniOdlazniVagoni_(1,_2)
+ + VremenaOtpreme_1000 - VremenaTehnickogPregleda_1112 >= -975
+_C16: - 5 DolazniRanziranje_('1111',_2) - 5 DolazniRanziranje_('1112',_2)
+ - 5 DolazniRanziranje_('1113',_2) - 1000 FormiraniOdlazniVagoni_(2,_2)
+ + VremenaOtpreme_1002 - VremenaTehnickogPregleda_1112 >= -975
+_C17: - 5 DolazniRanziranje_('1111',_2) - 5 DolazniRanziranje_('1112',_2)
+ - 5 DolazniRanziranje_('1113',_2) - 1000 FormiraniOdlazniVagoni_(3,_2)
+ + VremenaOtpreme_1003 - VremenaTehnickogPregleda_1112 >= -975
+_C18: - 5 DolazniRanziranje_('1111',_3) - 5 DolazniRanziranje_('1112',_3)
+ - 5 DolazniRanziranje_('1113',_3) - 1000 FormiraniOdlazniVagoni_(1,_3)
+ + VremenaOtpreme_1000 - VremenaTehnickogPregleda_1113 >= -975
+_C19: - 5 DolazniRanziranje_('1111',_3) - 5 DolazniRanziranje_('1112',_3)
+ - 5 DolazniRanziranje_('1113',_3) - 1000 FormiraniOdlazniVagoni_(2,_3)
+ + VremenaOtpreme_1002 - VremenaTehnickogPregleda_1113 >= -975
+_C2: - 5 DolazniRanziranje_('1111',_2) - 5 DolazniRanziranje_('1112',_2)
+ - 5 DolazniRanziranje_('1113',_2) - VremenaTehnickogPregleda_1112
+ + VremenaTehnickogPregleda_1113 >= 0
+_C20: - 5 DolazniRanziranje_('1111',_3) - 5 DolazniRanziranje_('1112',_3)
+ - 5 DolazniRanziranje_('1113',_3) - 1000 FormiraniOdlazniVagoni_(3,_3)
+ + VremenaOtpreme_1003 - VremenaTehnickogPregleda_1113 >= -975
+_C21: - 1000 DolazniRanziranje_('1111',_1)
+ + 1000 FormiraniOdlazniVagoni_(2,_1) - 1000 OdlazniRanziranje_('1000',_2)
+ - PrisustvoNaPozicijama_('1000',_'C') >= -2000
+_C22: - 1000 DolazniRanziranje_('1111',_1)
+ + 1000 FormiraniOdlazniVagoni_(2,_1) - 1000 OdlazniRanziranje_('1000',_2)
+ - PrisustvoNaPozicijama_('1000',_'C') >= -2000
+_C23: - 1000 DolazniRanziranje_('1111',_1)
+ + 1000 FormiraniOdlazniVagoni_(2,_1) - 1000 OdlazniRanziranje_('1000',_2)
+ - PrisustvoNaPozicijama_('1000',_'C') >= -2000
+_C24: - 1000 DolazniRanziranje_('1111',_1)
+ + 1000 FormiraniOdlazniVagoni_(2,_1) - 1000 OdlazniRanziranje_('1002',_2)
+ - PrisustvoNaPozicijama_('1002',_'A') - PrisustvoNaPozicijama_('1002',_'B')
+ >= -2000
+_C25: - 1000 DolazniRanziranje_('1111',_1)
+ + 1000 FormiraniOdlazniVagoni_(2,_1) - 1000 OdlazniRanziranje_('1002',_2)
+ - PrisustvoNaPozicijama_('1002',_'A') - PrisustvoNaPozicijama_('1002',_'B')
+ >= -2000
+_C26: - 1000 DolazniRanziranje_('1111',_1)
+ + 1000 FormiraniOdlazniVagoni_(2,_1) - 1000 OdlazniRanziranje_('1002',_2)
+ - PrisustvoNaPozicijama_('1002',_'A') - PrisustvoNaPozicijama_('1002',_'B')
+ >= -2000
+_C27: - 1000 DolazniRanziranje_('1111',_1)
+ + 1000 FormiraniOdlazniVagoni_(2,_1) - 1000 OdlazniRanziranje_('1003',_2)
+ >= -2000
+_C28: - 1000 DolazniRanziranje_('1111',_1)
+ + 1000 FormiraniOdlazniVagoni_(2,_1) - 1000 OdlazniRanziranje_('1003',_2)
+ >= -2000
+_C29: - 1000 DolazniRanziranje_('1111',_1)
+ + 1000 FormiraniOdlazniVagoni_(2,_1) - 1000 OdlazniRanziranje_('1003',_2)
+ >= -2000
+_C3: - 40 DolazniRanziranje_('1111',_1) - 80 DolazniRanziranje_('1112',_1)
+ - 180 DolazniRanziranje_('1113',_1) + VremenaTehnickogPregleda_1111 >= 0
+_C30: - 1000 DolazniRanziranje_('1112',_1)
+ + 1000 FormiraniOdlazniVagoni_(2,_1) - 1000 OdlazniRanziranje_('1000',_2)
+ - PrisustvoNaPozicijama_('1000',_'D') >= -2000
+_C31: - 1000 DolazniRanziranje_('1112',_1)
+ + 1000 FormiraniOdlazniVagoni_(2,_1) - 1000 OdlazniRanziranje_('1000',_2)
+ - PrisustvoNaPozicijama_('1000',_'D') >= -2000
+_C32: - 1000 DolazniRanziranje_('1112',_1)
+ + 1000 FormiraniOdlazniVagoni_(2,_1) - 1000 OdlazniRanziranje_('1000',_2)
+ - PrisustvoNaPozicijama_('1000',_'D') >= -2000
+_C33: - 1000 DolazniRanziranje_('1112',_1)
+ + 1000 FormiraniOdlazniVagoni_(2,_1) - 1000 OdlazniRanziranje_('1002',_2)
+ >= -2000
+_C34: - 1000 DolazniRanziranje_('1112',_1)
+ + 1000 FormiraniOdlazniVagoni_(2,_1) - 1000 OdlazniRanziranje_('1002',_2)
+ >= -2000
+_C35: - 1000 DolazniRanziranje_('1112',_1)
+ + 1000 FormiraniOdlazniVagoni_(2,_1) - 1000 OdlazniRanziranje_('1002',_2)
+ >= -2000
+_C36: - 1000 DolazniRanziranje_('1112',_1)
+ + 1000 FormiraniOdlazniVagoni_(2,_1) - 1000 OdlazniRanziranje_('1003',_2)
+ - PrisustvoNaPozicijama_('1003',_'E') >= -2000
+_C37: - 1000 DolazniRanziranje_('1112',_1)
+ + 1000 FormiraniOdlazniVagoni_(2,_1) - 1000 OdlazniRanziranje_('1003',_2)
+ - PrisustvoNaPozicijama_('1003',_'E') >= -2000
+_C38: - 1000 DolazniRanziranje_('1112',_1)
+ + 1000 FormiraniOdlazniVagoni_(2,_1) - 1000 OdlazniRanziranje_('1003',_2)
+ - PrisustvoNaPozicijama_('1003',_'E') >= -2000
+_C39: - 1000 DolazniRanziranje_('1113',_1)
+ + 1000 FormiraniOdlazniVagoni_(2,_1) - 1000 OdlazniRanziranje_('1000',_2)
+ >= -2000
+_C4: - 40 DolazniRanziranje_('1111',_2) - 80 DolazniRanziranje_('1112',_2)
+ - 180 DolazniRanziranje_('1113',_2) + VremenaTehnickogPregleda_1112 >= 0
+_C40: - 1000 DolazniRanziranje_('1113',_1)
+ + 1000 FormiraniOdlazniVagoni_(2,_1) - 1000 OdlazniRanziranje_('1000',_2)
+ >= -2000
+_C41: - 1000 DolazniRanziranje_('1113',_1)
+ + 1000 FormiraniOdlazniVagoni_(2,_1) - 1000 OdlazniRanziranje_('1000',_2)
+ >= -2000
+_C42: - 1000 DolazniRanziranje_('1113',_1)
+ + 1000 FormiraniOdlazniVagoni_(2,_1) - 1000 OdlazniRanziranje_('1002',_2)
+ >= -2000
+_C43: - 1000 DolazniRanziranje_('1113',_1)
+ + 1000 FormiraniOdlazniVagoni_(2,_1) - 1000 OdlazniRanziranje_('1002',_2)
+ >= -2000
+_C44: - 1000 DolazniRanziranje_('1113',_1)
+ + 1000 FormiraniOdlazniVagoni_(2,_1) - 1000 OdlazniRanziranje_('1002',_2)
+ >= -2000
+_C45: - 1000 DolazniRanziranje_('1113',_1)
+ + 1000 FormiraniOdlazniVagoni_(2,_1) - 1000 OdlazniRanziranje_('1003',_2)
+ - PrisustvoNaPozicijama_('1003',_'F') - PrisustvoNaPozicijama_('1003',_'G')
+ >= -2000
+_C46: - 1000 DolazniRanziranje_('1113',_1)
+ + 1000 FormiraniOdlazniVagoni_(2,_1) - 1000 OdlazniRanziranje_('1003',_2)
+ - PrisustvoNaPozicijama_('1003',_'F') - PrisustvoNaPozicijama_('1003',_'G')
+ >= -2000
+_C47: - 1000 DolazniRanziranje_('1113',_1)
+ + 1000 FormiraniOdlazniVagoni_(2,_1) - 1000 OdlazniRanziranje_('1003',_2)
+ - PrisustvoNaPozicijama_('1003',_'F') - PrisustvoNaPozicijama_('1003',_'G')
+ >= -2000
+_C48: - 1000 DolazniRanziranje_('1111',_2)
+ + 1000 FormiraniOdlazniVagoni_(2,_2) - 1000 OdlazniRanziranje_('1000',_2)
+ - PrisustvoNaPozicijama_('1000',_'C') >= -2000
+_C49: - 1000 DolazniRanziranje_('1111',_2)
+ + 1000 FormiraniOdlazniVagoni_(2,_2) - 1000 OdlazniRanziranje_('1000',_2)
+ - PrisustvoNaPozicijama_('1000',_'C') >= -2000
+_C5: - 40 DolazniRanziranje_('1111',_3) - 80 DolazniRanziranje_('1112',_3)
+ - 180 DolazniRanziranje_('1113',_3) + VremenaTehnickogPregleda_1113 >= 0
+_C50: - 1000 DolazniRanziranje_('1111',_2)
+ + 1000 FormiraniOdlazniVagoni_(2,_2) - 1000 OdlazniRanziranje_('1000',_2)
+ - PrisustvoNaPozicijama_('1000',_'C') >= -2000
+_C51: - 1000 DolazniRanziranje_('1111',_2)
+ + 1000 FormiraniOdlazniVagoni_(2,_2) - 1000 OdlazniRanziranje_('1002',_2)
+ - PrisustvoNaPozicijama_('1002',_'A') - PrisustvoNaPozicijama_('1002',_'B')
+ >= -2000
+_C52: - 1000 DolazniRanziranje_('1111',_2)
+ + 1000 FormiraniOdlazniVagoni_(2,_2) - 1000 OdlazniRanziranje_('1002',_2)
+ - PrisustvoNaPozicijama_('1002',_'A') - PrisustvoNaPozicijama_('1002',_'B')
+ >= -2000
+_C53: - 1000 DolazniRanziranje_('1111',_2)
+ + 1000 FormiraniOdlazniVagoni_(2,_2) - 1000 OdlazniRanziranje_('1002',_2)
+ - PrisustvoNaPozicijama_('1002',_'A') - PrisustvoNaPozicijama_('1002',_'B')
+ >= -2000
+_C54: - 1000 DolazniRanziranje_('1111',_2)
+ + 1000 FormiraniOdlazniVagoni_(2,_2) - 1000 OdlazniRanziranje_('1003',_2)
+ >= -2000
+_C55: - 1000 DolazniRanziranje_('1111',_2)
+ + 1000 FormiraniOdlazniVagoni_(2,_2) - 1000 OdlazniRanziranje_('1003',_2)
+ >= -2000
+_C56: - 1000 DolazniRanziranje_('1111',_2)
+ + 1000 FormiraniOdlazniVagoni_(2,_2) - 1000 OdlazniRanziranje_('1003',_2)
+ >= -2000
+_C57: - 1000 DolazniRanziranje_('1112',_2)
+ + 1000 FormiraniOdlazniVagoni_(2,_2) - 1000 OdlazniRanziranje_('1000',_2)
+ - PrisustvoNaPozicijama_('1000',_'D') >= -2000
+_C58: - 1000 DolazniRanziranje_('1112',_2)
+ + 1000 FormiraniOdlazniVagoni_(2,_2) - 1000 OdlazniRanziranje_('1000',_2)
+ - PrisustvoNaPozicijama_('1000',_'D') >= -2000
+_C59: - 1000 DolazniRanziranje_('1112',_2)
+ + 1000 FormiraniOdlazniVagoni_(2,_2) - 1000 OdlazniRanziranje_('1000',_2)
+ - PrisustvoNaPozicijama_('1000',_'D') >= -2000
+_C6: DolazniRanziranje_('1111',_1) + DolazniRanziranje_('1112',_1)
+ + DolazniRanziranje_('1113',_1) = 1
+_C60: - 1000 DolazniRanziranje_('1112',_2)
+ + 1000 FormiraniOdlazniVagoni_(2,_2) - 1000 OdlazniRanziranje_('1002',_2)
+ >= -2000
+_C61: - 1000 DolazniRanziranje_('1112',_2)
+ + 1000 FormiraniOdlazniVagoni_(2,_2) - 1000 OdlazniRanziranje_('1002',_2)
+ >= -2000
+_C62: - 1000 DolazniRanziranje_('1112',_2)
+ + 1000 FormiraniOdlazniVagoni_(2,_2) - 1000 OdlazniRanziranje_('1002',_2)
+ >= -2000
+_C63: - 1000 DolazniRanziranje_('1112',_2)
+ + 1000 FormiraniOdlazniVagoni_(2,_2) - 1000 OdlazniRanziranje_('1003',_2)
+ - PrisustvoNaPozicijama_('1003',_'E') >= -2000
+_C64: - 1000 DolazniRanziranje_('1112',_2)
+ + 1000 FormiraniOdlazniVagoni_(2,_2) - 1000 OdlazniRanziranje_('1003',_2)
+ - PrisustvoNaPozicijama_('1003',_'E') >= -2000
+_C65: - 1000 DolazniRanziranje_('1112',_2)
+ + 1000 FormiraniOdlazniVagoni_(2,_2) - 1000 OdlazniRanziranje_('1003',_2)
+ - PrisustvoNaPozicijama_('1003',_'E') >= -2000
+_C66: - 1000 DolazniRanziranje_('1113',_2)
+ + 1000 FormiraniOdlazniVagoni_(2,_2) - 1000 OdlazniRanziranje_('1000',_2)
+ >= -2000
+_C67: - 1000 DolazniRanziranje_('1113',_2)
+ + 1000 FormiraniOdlazniVagoni_(2,_2) - 1000 OdlazniRanziranje_('1000',_2)
+ >= -2000
+_C68: - 1000 DolazniRanziranje_('1113',_2)
+ + 1000 FormiraniOdlazniVagoni_(2,_2) - 1000 OdlazniRanziranje_('1000',_2)
+ >= -2000
+_C69: - 1000 DolazniRanziranje_('1113',_2)
+ + 1000 FormiraniOdlazniVagoni_(2,_2) - 1000 OdlazniRanziranje_('1002',_2)
+ >= -2000
+_C7: DolazniRanziranje_('1111',_2) + DolazniRanziranje_('1112',_2)
+ + DolazniRanziranje_('1113',_2) = 1
+_C70: - 1000 DolazniRanziranje_('1113',_2)
+ + 1000 FormiraniOdlazniVagoni_(2,_2) - 1000 OdlazniRanziranje_('1002',_2)
+ >= -2000
+_C71: - 1000 DolazniRanziranje_('1113',_2)
+ + 1000 FormiraniOdlazniVagoni_(2,_2) - 1000 OdlazniRanziranje_('1002',_2)
+ >= -2000
+_C72: - 1000 DolazniRanziranje_('1113',_2)
+ + 1000 FormiraniOdlazniVagoni_(2,_2) - 1000 OdlazniRanziranje_('1003',_2)
+ - PrisustvoNaPozicijama_('1003',_'F') - PrisustvoNaPozicijama_('1003',_'G')
+ >= -2000
+_C73: - 1000 DolazniRanziranje_('1113',_2)
+ + 1000 FormiraniOdlazniVagoni_(2,_2) - 1000 OdlazniRanziranje_('1003',_2)
+ - PrisustvoNaPozicijama_('1003',_'F') - PrisustvoNaPozicijama_('1003',_'G')
+ >= -2000
+_C74: - 1000 DolazniRanziranje_('1113',_2)
+ + 1000 FormiraniOdlazniVagoni_(2,_2) - 1000 OdlazniRanziranje_('1003',_2)
+ - PrisustvoNaPozicijama_('1003',_'F') - PrisustvoNaPozicijama_('1003',_'G')
+ >= -2000
+_C75: - 1000 DolazniRanziranje_('1111',_3)
+ + 1000 FormiraniOdlazniVagoni_(2,_3) - 1000 OdlazniRanziranje_('1000',_2)
+ - PrisustvoNaPozicijama_('1000',_'C') >= -2000
+_C76: - 1000 DolazniRanziranje_('1111',_3)
+ + 1000 FormiraniOdlazniVagoni_(2,_3) - 1000 OdlazniRanziranje_('1000',_2)
+ - PrisustvoNaPozicijama_('1000',_'C') >= -2000
+_C77: - 1000 DolazniRanziranje_('1111',_3)
+ + 1000 FormiraniOdlazniVagoni_(2,_3) - 1000 OdlazniRanziranje_('1000',_2)
+ - PrisustvoNaPozicijama_('1000',_'C') >= -2000
+_C78: - 1000 DolazniRanziranje_('1111',_3)
+ + 1000 FormiraniOdlazniVagoni_(2,_3) - 1000 OdlazniRanziranje_('1002',_2)
+ - PrisustvoNaPozicijama_('1002',_'A') - PrisustvoNaPozicijama_('1002',_'B')
+ >= -2000
+_C79: - 1000 DolazniRanziranje_('1111',_3)
+ + 1000 FormiraniOdlazniVagoni_(2,_3) - 1000 OdlazniRanziranje_('1002',_2)
+ - PrisustvoNaPozicijama_('1002',_'A') - PrisustvoNaPozicijama_('1002',_'B')
+ >= -2000
+_C8: DolazniRanziranje_('1111',_3) + DolazniRanziranje_('1112',_3)
+ + DolazniRanziranje_('1113',_3) = 1
+_C80: - 1000 DolazniRanziranje_('1111',_3)
+ + 1000 FormiraniOdlazniVagoni_(2,_3) - 1000 OdlazniRanziranje_('1002',_2)
+ - PrisustvoNaPozicijama_('1002',_'A') - PrisustvoNaPozicijama_('1002',_'B')
+ >= -2000
+_C81: - 1000 DolazniRanziranje_('1111',_3)
+ + 1000 FormiraniOdlazniVagoni_(2,_3) - 1000 OdlazniRanziranje_('1003',_2)
+ >= -2000
+_C82: - 1000 DolazniRanziranje_('1111',_3)
+ + 1000 FormiraniOdlazniVagoni_(2,_3) - 1000 OdlazniRanziranje_('1003',_2)
+ >= -2000
+_C83: - 1000 DolazniRanziranje_('1111',_3)
+ + 1000 FormiraniOdlazniVagoni_(2,_3) - 1000 OdlazniRanziranje_('1003',_2)
+ >= -2000
+_C84: - 1000 DolazniRanziranje_('1112',_3)
+ + 1000 FormiraniOdlazniVagoni_(2,_3) - 1000 OdlazniRanziranje_('1000',_2)
+ - PrisustvoNaPozicijama_('1000',_'D') >= -2000
+_C85: - 1000 DolazniRanziranje_('1112',_3)
+ + 1000 FormiraniOdlazniVagoni_(2,_3) - 1000 OdlazniRanziranje_('1000',_2)
+ - PrisustvoNaPozicijama_('1000',_'D') >= -2000
+_C86: - 1000 DolazniRanziranje_('1112',_3)
+ + 1000 FormiraniOdlazniVagoni_(2,_3) - 1000 OdlazniRanziranje_('1000',_2)
+ - PrisustvoNaPozicijama_('1000',_'D') >= -2000
+_C87: - 1000 DolazniRanziranje_('1112',_3)
+ + 1000 FormiraniOdlazniVagoni_(2,_3) - 1000 OdlazniRanziranje_('1002',_2)
+ >= -2000
+_C88: - 1000 DolazniRanziranje_('1112',_3)
+ + 1000 FormiraniOdlazniVagoni_(2,_3) - 1000 OdlazniRanziranje_('1002',_2)
+ >= -2000
+_C89: - 1000 DolazniRanziranje_('1112',_3)
+ + 1000 FormiraniOdlazniVagoni_(2,_3) - 1000 OdlazniRanziranje_('1002',_2)
+ >= -2000
+_C9: DolazniRanziranje_('1111',_1) + DolazniRanziranje_('1111',_2)
+ + DolazniRanziranje_('1111',_3) = 1
+_C90: - 1000 DolazniRanziranje_('1112',_3)
+ + 1000 FormiraniOdlazniVagoni_(2,_3) - 1000 OdlazniRanziranje_('1003',_2)
+ - PrisustvoNaPozicijama_('1003',_'E') >= -2000
+_C91: - 1000 DolazniRanziranje_('1112',_3)
+ + 1000 FormiraniOdlazniVagoni_(2,_3) - 1000 OdlazniRanziranje_('1003',_2)
+ - PrisustvoNaPozicijama_('1003',_'E') >= -2000
+_C92: - 1000 DolazniRanziranje_('1112',_3)
+ + 1000 FormiraniOdlazniVagoni_(2,_3) - 1000 OdlazniRanziranje_('1003',_2)
+ - PrisustvoNaPozicijama_('1003',_'E') >= -2000
+_C93: - 1000 DolazniRanziranje_('1113',_3)
+ + 1000 FormiraniOdlazniVagoni_(2,_3) - 1000 OdlazniRanziranje_('1000',_2)
+ >= -2000
+_C94: - 1000 DolazniRanziranje_('1113',_3)
+ + 1000 FormiraniOdlazniVagoni_(2,_3) - 1000 OdlazniRanziranje_('1000',_2)
+ >= -2000
+_C95: - 1000 DolazniRanziranje_('1113',_3)
+ + 1000 FormiraniOdlazniVagoni_(2,_3) - 1000 OdlazniRanziranje_('1000',_2)
+ >= -2000
+_C96: - 1000 DolazniRanziranje_('1113',_3)
+ + 1000 FormiraniOdlazniVagoni_(2,_3) - 1000 OdlazniRanziranje_('1002',_2)
+ >= -2000
+_C97: - 1000 DolazniRanziranje_('1113',_3)
+ + 1000 FormiraniOdlazniVagoni_(2,_3) - 1000 OdlazniRanziranje_('1002',_2)
+ >= -2000
+_C98: - 1000 DolazniRanziranje_('1113',_3)
+ + 1000 FormiraniOdlazniVagoni_(2,_3) - 1000 OdlazniRanziranje_('1002',_2)
+ >= -2000
+_C99: - 1000 DolazniRanziranje_('1113',_3)
+ + 1000 FormiraniOdlazniVagoni_(2,_3) - 1000 OdlazniRanziranje_('1003',_2)
+ - PrisustvoNaPozicijama_('1003',_'F') - PrisustvoNaPozicijama_('1003',_'G')
+ >= -2000
+Binaries
+AktivnostOdlaznihVagona_1000
+AktivnostOdlaznihVagona_1002
+AktivnostOdlaznihVagona_1003
+DolazniRanziranje_('1111',_1)
+DolazniRanziranje_('1111',_2)
+DolazniRanziranje_('1111',_3)
+DolazniRanziranje_('1112',_1)
+DolazniRanziranje_('1112',_2)
+DolazniRanziranje_('1112',_3)
+DolazniRanziranje_('1113',_1)
+DolazniRanziranje_('1113',_2)
+DolazniRanziranje_('1113',_3)
+FormiraniOdlazniVagoni_(1,_1)
+FormiraniOdlazniVagoni_(1,_2)
+FormiraniOdlazniVagoni_(1,_3)
+FormiraniOdlazniVagoni_(2,_1)
+FormiraniOdlazniVagoni_(2,_2)
+FormiraniOdlazniVagoni_(2,_3)
+FormiraniOdlazniVagoni_(3,_1)
+FormiraniOdlazniVagoni_(3,_2)
+FormiraniOdlazniVagoni_(3,_3)
+OdlazniRanziranje_('1000',_2)
+OdlazniRanziranje_('1002',_2)
+OdlazniRanziranje_('1003',_2)
+OsobineOdlaznihVagona_('1000',_'l')
+OsobineOdlaznihVagona_('1000',_'r')
+OsobineOdlaznihVagona_('1000',_'w')
+OsobineOdlaznihVagona_('1002',_'l')
+OsobineOdlaznihVagona_('1002',_'r')
+OsobineOdlaznihVagona_('1002',_'w')
+OsobineOdlaznihVagona_('1003',_'l')
+OsobineOdlaznihVagona_('1003',_'r')
+OsobineOdlaznihVagona_('1003',_'w')
+PrisustvoNaPozicijama_('1000',_'A')
+PrisustvoNaPozicijama_('1000',_'B')
+PrisustvoNaPozicijama_('1000',_'C')
+PrisustvoNaPozicijama_('1000',_'D')
+PrisustvoNaPozicijama_('1000',_'E')
+PrisustvoNaPozicijama_('1000',_'F')
+PrisustvoNaPozicijama_('1000',_'G')
+PrisustvoNaPozicijama_('1002',_'A')
+PrisustvoNaPozicijama_('1002',_'B')
+PrisustvoNaPozicijama_('1002',_'C')
+PrisustvoNaPozicijama_('1002',_'D')
+PrisustvoNaPozicijama_('1002',_'E')
+PrisustvoNaPozicijama_('1002',_'F')
+PrisustvoNaPozicijama_('1002',_'G')
+PrisustvoNaPozicijama_('1003',_'A')
+PrisustvoNaPozicijama_('1003',_'B')
+PrisustvoNaPozicijama_('1003',_'C')
+PrisustvoNaPozicijama_('1003',_'D')
+PrisustvoNaPozicijama_('1003',_'E')
+PrisustvoNaPozicijama_('1003',_'F')
+PrisustvoNaPozicijama_('1003',_'G')
+End
